@@ -1,28 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-const { VITE_BASE_URL: API_URL } = import.meta.env;
 
 export default function Navbar() {
-  const [isLogin, setIsLogin] = useState(false);
-  const checkUser = async () => {
-    try {
-      const cookie = document.cookie.replace(
-        /(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/,
-        '$1'
-      );
-      axios.defaults.headers.common['Authorization'] = cookie;
-      await axios.post(`${API_URL}/v2/api/user/check`);
-      setIsLogin(true);
-    } catch (error) {
-      console.log(error);
-      setIsLogin(false);
-    }
-  };
-  useEffect(() => {
-    checkUser();
-  }, []);
-
   return (
     <>
       <nav
@@ -47,13 +25,9 @@ export default function Navbar() {
               </NavLink>
             </li>
           </ul>
-          {isLogin ? (
-            <div className='btn btn-success'>已登入</div>
-          ) : (
-            <NavLink className="btn btn-secondary" to="/login">
-              登入
-            </NavLink>
-          )}
+          <NavLink className="btn btn-secondary" to="/login">
+            登入
+          </NavLink>
         </div>
       </nav>
     </>

@@ -27,7 +27,7 @@ export default function Login() {
       alert('帳號或密碼錯誤');
       console.log(error);
     } finally {
-      navigate('/');
+      navigate('/admin');
     }
   };
   return (

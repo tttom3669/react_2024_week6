@@ -5,7 +5,7 @@ import { useForm, useWatch } from 'react-hook-form';
 
 const { VITE_BASE_URL: BASE_URL, VITE_API_PATH: API_PATH } = import.meta.env;
 
-function App() {
+function Carts() {
   const [cartsData, setCartsData] = useState({});
   const [isScreenLoading, setIsScreenLoading] = useState(false);
 
@@ -89,10 +89,7 @@ function App() {
       console.log(error);
     }
   };
-  const watchForm = useWatch({ control });
-  useEffect(() => {
-    console.log('errors', errors);
-  }, [watchForm, errors]);
+  useWatch({ control });
 
   return (
     <>
@@ -104,6 +101,7 @@ function App() {
               className="btn btn-outline-danger"
               type="button"
               onClick={() => deleteCart()}
+              disabled={!cartsData?.carts?.length}
             >
               清空購物車
             </button>
@@ -230,7 +228,7 @@ function App() {
               </label>
               <input
                 id="tel"
-                type="text"
+                type="tel"
                 className={`form-control ${errors.tel && 'is-invalid'}`}
                 placeholder="請輸入電話"
                 {...register('tel', {
@@ -285,7 +283,11 @@ function App() {
               ></textarea>
             </div>
             <div className="text-end">
-              <button type="submit" className="btn btn-danger">
+              <button
+                type="submit"
+                className="btn btn-danger"
+                disabled={!cartsData?.carts?.length}
+              >
                 送出訂單
               </button>
             </div>
@@ -310,4 +312,4 @@ function App() {
   );
 }
 
-export default App;
+export default Carts;
