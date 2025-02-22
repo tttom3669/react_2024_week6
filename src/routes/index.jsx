@@ -8,6 +8,8 @@ import Product from '../views/front/Product';
 import NotFound from '../views/NotFound';
 import Login from '../views/Login';
 import AdminHome from '../views/admin/AdminHome';
+import AdminProducts from '../views/admin/AdminProducts';
+
 const routes = [
   {
     path: '/',
@@ -39,6 +41,10 @@ const routes = [
       {
         index: true,
         element: <AdminHome />,
+      },
+      {
+        path: 'products',
+        element: <AdminProducts />,
       },
     ],
   },

@@ -47,7 +47,7 @@ export default function Products() {
   return (
     <>
       <div className="container mt-5">
-      <h1 className="text-center fw-bold mb-2">產品頁</h1>
+        <h1 className="text-center fw-bold mb-2">產品頁</h1>
         <table className="table align-middle">
           <thead>
             <tr>
