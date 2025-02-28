@@ -66,7 +66,6 @@ const ProductModal = ({
         })
       );
     } catch (error) {
-      closeModal();
       dispatch(
         pushMessage({
           text: `${error.response.data.message}`,
